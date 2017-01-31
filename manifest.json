@@ -11,11 +11,12 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*.facebook.com/*"
+        "https://*.facebook.com/*"
       ],
       "js": [
           "scripts/facebreak.js"
-      ]
+      ],
+      "run_at": "document_idle"
     }
   ]
 }

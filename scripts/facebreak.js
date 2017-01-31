@@ -26,12 +26,8 @@ if(targets.length>1) {
   var target = targets[2];
 
   if(isElement(target)) {
-
-    console.log("listening for mutations");
-
     // create an observer instance
     var observer = new MutationObserver(function(mutations) {
-      console.log("marking all as read");
       simulateClick(document.querySelectorAll('[data-testid="non_react_mark_all_as_read_link"]')[0]);
     });
  
@@ -45,3 +41,12 @@ if(targets.length>1) {
 
 // Just in case there is a notification waiting for us upon login…
 simulateClick(document.querySelectorAll('[data-testid="non_react_mark_all_as_read_link"]')[0]);
+
+
+// Removes the container for the "pop-up" notification elements, so
+// they can't be added.
+var notificationPagelet = document.getElementById("NotificationsBeeperPagelet");
+
+if(isElement(notificationPagelet)) {
+  notificationPagelet.parentNode.removeChild(notificationPagelet);
+}
