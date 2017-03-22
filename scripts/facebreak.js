@@ -19,6 +19,20 @@ function isElement(o) {
   );
 }
 
+function removeCommentBoxes() {
+  var commentboxes = document.evaluate('//*[@id="u_0_1m"]/div/div/div[not(@id)]', document, null, XPathResult.ANY_TYPE, null );
+  try {
+    var node = commentboxes.iterateNext();
+    if(node) {
+      node.parentNode.removeChild(node);
+        console.log("removed one")
+
+    }  
+  } catch (e) {
+    dump( 'Error: Document tree modified during iteration ' + e );
+  }
+}
+
 // Set up the mutation event handler.
 var targets = document.getElementsByClassName("jewelButton");
 
@@ -43,6 +57,7 @@ if(targets.length>1) {
 simulateClick(document.querySelectorAll('[data-testid="non_react_mark_all_as_read_link"]')[0]);
 
 
+
 // Removes the container for the "pop-up" notification elements, so
 // they can't be added.
 var notificationPagelet = document.getElementById("NotificationsBeeperPagelet");
@@ -50,3 +65,26 @@ var notificationPagelet = document.getElementById("NotificationsBeeperPagelet");
 if(isElement(notificationPagelet)) {
   notificationPagelet.parentNode.removeChild(notificationPagelet);
 }
+
+
+//
+// Listen for and remove the comment boxes as they appear
+//
+/*var target = document.getElementById("pagelet_dock");
+
+if(target) {
+  if(isElement(target)) {
+    // create an observer instance
+    var observer = new MutationObserver(function(mutations) {
+      removeCommentBoxes();
+    });
+ 
+    // configuration of the observer:
+    var config = { attributes: true, childList: true, characterData: true, subtree: true };
+ 
+    // pass in the target node, as well as the observer options
+    observer.observe(target, config);
+  }
+}*/
+
+removeCommentBoxes()

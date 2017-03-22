@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "FaceBreak",
   "minimum_chrome_version": "24.0.1307.0",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage_url": "http://facebreak.me",
   "icons": {
     "16": "icon_16.png",
