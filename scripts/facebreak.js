@@ -25,8 +25,6 @@ function removeCommentBoxes() {
     var node = commentboxes.iterateNext();
     if(node) {
       node.parentNode.removeChild(node);
-        console.log("removed one")
-
     }  
   } catch (e) {
     dump( 'Error: Document tree modified during iteration ' + e );
